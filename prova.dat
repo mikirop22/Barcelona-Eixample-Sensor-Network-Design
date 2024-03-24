@@ -1,0 +1,16 @@
+set INTERSECCIONS := 1 2 3 4 5;
+set PATHS := 1 2 3;
+set FIXED := ;
+
+param max_sensors := 3;
+
+param path_flow :=
+1 10
+2 15
+3 20;
+
+param path_intersections: 
+	1 2 3 4 5 :=
+1 		1 0 1 0 0
+2 		0 0 1 0 1
+3 		0 1 0 1 0;
