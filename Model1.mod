@@ -16,7 +16,7 @@ maximize total:
 
 # Restricciones
 subject to path_sensorized {i in PATHS}:
-    sum{j in INTERSECCIONS} path_intersections[i, j] * intersection_wth_sensor[j] * sensor_path[i] >= 2 * sensor_path[i];
+    sum{j in INTERSECCIONS} path_intersections[i, j] * intersection_wth_sensor[j] >= 2 * sensor_path[i];
     # Si sensor_path[i] == 0, la restricción no tiene efecto
 
 subject to sensors:

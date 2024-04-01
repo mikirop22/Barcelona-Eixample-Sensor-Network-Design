@@ -1,0 +1,16 @@
+# Borrar los anterior comandos en AMPL
+reset;
+
+# Cargar el modelo
+model Model1.mod;
+# Cargar los datos
+data output1.dat;
+# Indicacion a ampl de que se quiere utilizar como solver: CPLEX
+option solver cplex;
+
+#option presolve 0;
+#Resolver
+solve;
+
+# Mostrar los resultados
+display total;
