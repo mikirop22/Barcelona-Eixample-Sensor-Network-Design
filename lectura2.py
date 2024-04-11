@@ -1,5 +1,5 @@
 # Obrir el arxiu de entrada
-with open('input.txt', 'r') as file:
+with open('OPT23-24_Datos práctica 2.txt', 'r') as file:
     lines = file.readlines()
 
 # Crear un diccionari per a emmagatzemar les dades
@@ -35,7 +35,7 @@ i += 3 # tractem els PROHIBITED
 line = lines[i].split()
 for prohb in line:
     intersections.remove(prohb) # eliminem de les interseccions aquelles en les que no podem posar cap sensor
-
+    del interseccions_veines[prohb]
 
 i += 3 # tractem els path_flow
 while not 'path_intersections' in lines[i]:
@@ -53,7 +53,8 @@ while not 'intersection_neighborhood' in lines[i]:
         parts = lines[i].split()
         path = parts[0]
         intersection = parts[1]
-        data[path].append(intersection)
+        if intersection in intersections:    
+            data[path].append(intersection)
     i += 1
 
 i += 1      
@@ -62,7 +63,8 @@ while not lines[i].isspace():
     parts = lines[i].split()
     inter1 = parts[0]
     inter2 = parts[1]
-    interseccions_veines[inter1].append(inter2)
+    if inter1 in intersections and inter2 in intersections:
+        interseccions_veines[inter1].append(inter2)
     i += 1
 
 ###############################################
@@ -82,16 +84,25 @@ with open('output2.dat', 'w') as outfile:
     outfile.write(' '.join(map(str, fixed)))
     outfile.write(";\n")
     
+    outfile.write("set Path_intersections := ")
+    outfile.write(' '.join(['({0}, {1})'.format(key, val) for key, values in data.items() for val in values]))
+    outfile.write(";\n")
+    
+    outfile.write("set Inter_veines := ")
+    outfile.write(' '.join(['({0}, {1})'.format(key, val) for key, values in interseccions_veines.items() for val in values]))
+    outfile.write(";\n")
+
     outfile.write("\nparam max_sensors := 15;")
     
     outfile.write("\n")
+
     outfile.write("\nparam path_flow :=")
     
-    for path, flow in path_flow.items():    
-        #outfile.write("\t\t\t\t")
+    for path, flow in path_flow.items():
         outfile.write(f"\t\t\t\t\n{path} {flow}")
     outfile.write(";\n")
     
+"""    
     outfile.write("\nparam path_intersections:\n")
     outfile.write("\t\t\t")
     # Escribir los nombres de las intersecciones como encabezado
@@ -120,4 +131,4 @@ with open('output2.dat', 'w') as outfile:
         for intersection in intersections:
             outfile.write("1 " if intersection in interseccions_veines[inter1] else "0 ")
         outfile.write("\n")
-    outfile.write(";")
+    outfile.write(";")"""

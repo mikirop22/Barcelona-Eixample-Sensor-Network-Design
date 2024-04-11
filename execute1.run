@@ -2,7 +2,7 @@
 reset;
 
 # Cargar el modelo
-model Model1.mod;
+model Model_a.mod;
 # Cargar los datos
 data output1.dat;
 # Indicacion a ampl de que se quiere utilizar como solver: CPLEX
@@ -14,3 +14,4 @@ solve;
 
 # Mostrar los resultados
 display total;
+display sensor_path;
