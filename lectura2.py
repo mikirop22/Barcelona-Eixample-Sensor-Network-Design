@@ -101,34 +101,3 @@ with open('output2.dat', 'w') as outfile:
     for path, flow in path_flow.items():
         outfile.write(f"\t\t\t\t\n{path} {flow}")
     outfile.write(";\n")
-    
-"""    
-    outfile.write("\nparam path_intersections:\n")
-    outfile.write("\t\t\t")
-    # Escribir los nombres de las intersecciones como encabezado
-    for intersection in intersections:
-        outfile.write(intersection + " ")
-    outfile.write(":=\n")
-    
-    # Escribir los datos de intersecciones para cada ruta
-    for path, inters in data.items():
-        outfile.write(f"\t{path.ljust(10)}")
-        for intersection in intersections:
-            outfile.write("1 " if intersection in inters else "0 ")
-        outfile.write("\n")
-    outfile.write(";\n")
-    
-    outfile.write("\nparam inter_veines:\n")
-    outfile.write("\t\t\t")
-    # Escribir los nombres de las intersecciones como encabezado
-    for intersection in intersections:
-        outfile.write(intersection + " ")
-    outfile.write(":=\n")
-    
-    # Escribir los datos de intersecciones vecinas para cada interseccion
-    for inter1 in intersections:
-        outfile.write(f"\t{inter1.ljust(10)}")
-        for intersection in intersections:
-            outfile.write("1 " if intersection in interseccions_veines[inter1] else "0 ")
-        outfile.write("\n")
-    outfile.write(";")"""
