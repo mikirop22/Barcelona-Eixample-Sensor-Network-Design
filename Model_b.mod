@@ -11,7 +11,7 @@ param path_flow{PATHS};
 var sensor_path{PATHS} binary;
 var intersection_wth_sensor{INTERSECCIONS} binary;
 
-# Función objetivo
+# Funciï¿½n objetivo
 maximize total:
     sum {i in PATHS} sensor_path[i] * path_flow[i];
 
