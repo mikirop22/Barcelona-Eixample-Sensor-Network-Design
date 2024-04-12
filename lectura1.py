@@ -1,5 +1,5 @@
 # Obrir el arxiu de entrada
-with open('input.txt', 'r') as file:
+with open('OPT23-24_Datos práctica 2.txt', 'r') as file:
     lines = file.readlines()
 
 # Crear un diccionari per a emmagatzemar les dades

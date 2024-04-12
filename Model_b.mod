@@ -1,4 +1,3 @@
-# Definir conjunto de intersecciones
 set INTERSECCIONS;
 set PATHS;
 set FIXED;
